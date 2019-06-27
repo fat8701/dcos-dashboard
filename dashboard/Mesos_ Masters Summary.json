@@ -52,7 +52,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1561604584728,
+  "iteration": 1561604861719,
   "links": [],
   "panels": [
     {
@@ -303,7 +303,7 @@
       },
       "yaxes": [
         {
-          "format": "short",
+          "format": "locale",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -346,6 +346,8 @@
         "min": false,
         "rightSide": true,
         "show": true,
+        "sort": null,
+        "sortDesc": null,
         "total": false,
         "values": true
       },
@@ -532,7 +534,7 @@
       },
       "yaxes": [
         {
-          "format": "short",
+          "format": "locale",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -647,7 +649,7 @@
       },
       "yaxes": [
         {
-          "format": "short",
+          "format": "locale",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -861,5 +863,5 @@
   "timezone": "",
   "title": "Mesos: Masters Summary",
   "uid": "WPWgJ3Jik",
-  "version": 3
+  "version": 6
 }
