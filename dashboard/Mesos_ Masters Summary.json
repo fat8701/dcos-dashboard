@@ -52,7 +52,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1561602032086,
+  "iteration": 1561604584728,
   "links": [],
   "panels": [
     {
@@ -126,13 +126,15 @@
       "type": "table"
     },
     {
-      "aliasColors": {},
+      "aliasColors": {
+        "192.168.11.223:61091": "#e24d42"
+      },
       "bars": false,
       "dashLength": 10,
       "dashes": false,
       "datasource": "${DS_PROMETHEUS}",
       "decimals": 0,
-      "fill": 10,
+      "fill": 7,
       "gridPos": {
         "h": 9,
         "w": 12,
@@ -152,7 +154,7 @@
         "values": true
       },
       "lines": true,
-      "linewidth": 10,
+      "linewidth": 2,
       "links": [],
       "nullPointMode": "null as zero",
       "percentage": false,
@@ -859,5 +861,5 @@
   "timezone": "",
   "title": "Mesos: Masters Summary",
   "uid": "WPWgJ3Jik",
-  "version": 2
+  "version": 3
 }
