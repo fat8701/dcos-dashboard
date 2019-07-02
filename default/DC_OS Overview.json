@@ -46,11 +46,14 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1561601194019,
+  "iteration": 1562047237296,
   "links": [],
   "panels": [
     {
-      "aliasColors": {},
+      "aliasColors": {
+        "master-226": "#bf1b00",
+        "slave-157": "#7eb26d"
+      },
       "bars": false,
       "dashLength": 10,
       "dashes": false,
@@ -76,7 +79,7 @@
         "values": false
       },
       "lines": true,
-      "linewidth": 1,
+      "linewidth": 2,
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
@@ -96,7 +99,7 @@
           "refId": "A"
         },
         {
-          "expr": "(mesos_master_cpus_percent{dcos_cluster_name=\"$clustername\"})",
+          "expr": "(mesos_master_cpus_percent{dcos_cluster_name=\"$clustername\",state=\"leader\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{host}}",
@@ -147,7 +150,9 @@
       }
     },
     {
-      "aliasColors": {},
+      "aliasColors": {
+        "master-226": "#bf1b00"
+      },
       "bars": false,
       "dashLength": 10,
       "dashes": false,
@@ -173,7 +178,7 @@
         "values": false
       },
       "lines": true,
-      "linewidth": 1,
+      "linewidth": 2,
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
@@ -193,7 +198,7 @@
           "refId": "A"
         },
         {
-          "expr": "mesos_master_mem_percent{dcos_cluster_name=\"$clustername\"}",
+          "expr": "mesos_master_mem_percent{dcos_cluster_name=\"$clustername\",state=\"leader\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{host}}",
@@ -244,7 +249,9 @@
       }
     },
     {
-      "aliasColors": {},
+      "aliasColors": {
+        "master-226": "#bf1b00"
+      },
       "bars": false,
       "dashLength": 10,
       "dashes": false,
@@ -269,7 +276,7 @@
         "values": false
       },
       "lines": true,
-      "linewidth": 1,
+      "linewidth": 2,
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
@@ -289,7 +296,7 @@
           "refId": "A"
         },
         {
-          "expr": "mesos_master_disk_percent{dcos_cluster_name=\"$clustername\"}",
+          "expr": "mesos_master_disk_percent{dcos_cluster_name=\"$clustername\",state=\"leader\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{host}}",
@@ -457,7 +464,7 @@
         "values": false
       },
       "lines": true,
-      "linewidth": 1,
+      "linewidth": 2,
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
@@ -684,5 +691,5 @@
   "timezone": "",
   "title": "DC/OS Overview",
   "uid": "ACo4Hq1ik",
-  "version": 4
+  "version": 5
 }
