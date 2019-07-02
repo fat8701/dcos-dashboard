@@ -47,7 +47,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1562049787640,
+  "iteration": 1562056218863,
   "links": [],
   "panels": [
     {
@@ -172,18 +172,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "mem_total{host=~\"$host\"}",
+          "expr": "mem_used_percent{host=~\"$host\"}",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "Total ({{host}})",
+          "legendFormat": "{{host}}",
           "refId": "A"
-        },
-        {
-          "expr": "mem_used{host=~\"$host\"}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Used ({{host}})",
-          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -205,7 +198,7 @@
       },
       "yaxes": [
         {
-          "format": "bytes",
+          "format": "percent",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -263,7 +256,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(disk_used{host=~\"$host\",device!~\"overlay|tmpfs|devtmpfs\",path!~\"/var/lib/(/|.)*\"} / disk_total{host=~\"$host\",device!~\"overlay|tmpfs|devtmpfs\"}) * 100",
+          "expr": "(disk_used_percent{host=~\"$host\",device!~\"overlay|tmpfs|devtmpfs\",path!~\"/var/lib/(/|.)*\"} )",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -348,7 +341,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(disk_inodes_used{host=~\"$host\",device!~\"overlay|devtmpfs|tmpfs\"} / disk_inodes_total{host=~\"$host\",device!~\"overlay|devtmpfs|tmpfs\"}) * 100",
+          "expr": "(disk_inodes_used{host=~\"$host\",device!~\"overlay|devtmpfs|tmpfs\",path!~\"/var/lib/(/|.)*\"} / disk_inodes_total{host=~\"$host\",device!~\"overlay|devtmpfs|tmpfs\",path!~\"/var/lib/(/|.)*\"}) * 100 ",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -664,5 +657,5 @@
   "timezone": "",
   "title": "System: Details",
   "uid": "EVV-hFPiz",
-  "version": 3
+  "version": 5
 }
