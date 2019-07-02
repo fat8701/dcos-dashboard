@@ -47,7 +47,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1561602049530,
+  "iteration": 1562049787640,
   "links": [],
   "panels": [
     {
@@ -74,7 +74,7 @@
         "values": false
       },
       "lines": true,
-      "linewidth": 1,
+      "linewidth": 2,
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
@@ -159,7 +159,7 @@
         "values": false
       },
       "lines": true,
-      "linewidth": 1,
+      "linewidth": 2,
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
@@ -250,7 +250,7 @@
         "values": false
       },
       "lines": true,
-      "linewidth": 1,
+      "linewidth": 2,
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
@@ -263,7 +263,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(disk_used{host=~\"$host\",device!~\"overlay|tmpfs|devtmpfs\"} / disk_total{host=~\"$host\",device!~\"overlay|tmpfs|devtmpfs\"}) * 100",
+          "expr": "(disk_used{host=~\"$host\",device!~\"overlay|tmpfs|devtmpfs\",path!~\"/var/lib/(/|.)*\"} / disk_total{host=~\"$host\",device!~\"overlay|tmpfs|devtmpfs\"}) * 100",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -335,7 +335,7 @@
         "values": false
       },
       "lines": true,
-      "linewidth": 1,
+      "linewidth": 2,
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
@@ -420,7 +420,7 @@
         "values": false
       },
       "lines": true,
-      "linewidth": 1,
+      "linewidth": 2,
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
@@ -505,7 +505,7 @@
         "values": false
       },
       "lines": true,
-      "linewidth": 1,
+      "linewidth": 2,
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
@@ -664,5 +664,5 @@
   "timezone": "",
   "title": "System: Details",
   "uid": "EVV-hFPiz",
-  "version": 2
+  "version": 3
 }
