@@ -47,7 +47,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1561602015822,
+  "iteration": 1562140868860,
   "links": [],
   "panels": [
     {
@@ -74,7 +74,7 @@
         "values": false
       },
       "lines": true,
-      "linewidth": 1,
+      "linewidth": 2,
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
@@ -89,6 +89,7 @@
         {
           "expr": "cpus_limit{service_name=~\"$service_name\",executor_name=~\"$executor_name\",task_name=~\"$task_name\"}",
           "format": "time_series",
+          "hide": true,
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "CPU Limit (container {{container_id}}, {{host}})",
@@ -97,11 +98,18 @@
         {
           "expr": "rate(cpus_system_time_secs{service_name=~\"$service_name\",executor_name=~\"$executor_name\",task_name=~\"$task_name\"}[$rate_interval]) + rate(cpus_user_time_secs{service_name=~\"$service_name\",executor_name=~\"$executor_name\",task_name=~\"$task_name\"}[$rate_interval])",
           "format": "time_series",
-          "hide": false,
+          "hide": true,
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "CPU Usage (container {{container_id}}, {{host}})",
           "refId": "B"
+        },
+        {
+          "expr": "(rate(cpus_system_time_secs{service_name=~\"$service_name\",executor_name=~\"$executor_name\",task_name=~\"$task_name\"}[$rate_interval]) + rate(cpus_user_time_secs{service_name=~\"$service_name\",executor_name=~\"$executor_name\",task_name=~\"$task_name\"}[$rate_interval]))/cpus_limit{service_name=~\"$service_name\",executor_name=~\"$executor_name\",task_name=~\"$task_name\"}",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "CPU Usage (container {{container_id}}, {{host}})",
+          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -123,7 +131,7 @@
       },
       "yaxes": [
         {
-          "format": "short",
+          "format": "percentunit",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -168,7 +176,7 @@
         "values": false
       },
       "lines": true,
-      "linewidth": 1,
+      "linewidth": 2,
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
@@ -253,7 +261,7 @@
         "values": false
       },
       "lines": true,
-      "linewidth": 1,
+      "linewidth": 2,
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
@@ -268,6 +276,7 @@
         {
           "expr": "mem_limit_bytes{service_name=~\"$service_name\",executor_name=~\"$executor_name\",task_name=~\"$task_name\"}",
           "format": "time_series",
+          "hide": true,
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "Memory Limit (container {{container_id}}, {{host}})",
@@ -276,9 +285,17 @@
         {
           "expr": "mem_total_bytes{service_name=~\"$service_name\",executor_name=~\"$executor_name\",task_name=~\"$task_name\"}",
           "format": "time_series",
+          "hide": true,
           "intervalFactor": 1,
           "legendFormat": "Memory Usage (container {{container_id}}, {{host}})",
           "refId": "B"
+        },
+        {
+          "expr": "mem_rss_bytes{service_name=~\"$service_name\",executor_name=~\"$executor_name\",task_name=~\"$task_name\"}/mem_limit_bytes{service_name=~\"$service_name\",executor_name=~\"$executor_name\",task_name=~\"$task_name\"}",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "Memory Usage (container {{container_id}}, {{host}})",
+          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -300,7 +317,7 @@
       },
       "yaxes": [
         {
-          "format": "bytes",
+          "format": "percentunit",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -345,7 +362,7 @@
         "values": false
       },
       "lines": true,
-      "linewidth": 1,
+      "linewidth": 2,
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
@@ -360,6 +377,7 @@
         {
           "expr": "disk_limit_bytes{service_name=~\"$service_name\",executor_name=~\"$executor_name\",task_name=~\"$task_name\"}",
           "format": "time_series",
+          "hide": true,
           "intervalFactor": 1,
           "legendFormat": "Disk Limit (container {{container_id}}, {{host}})",
           "refId": "A"
@@ -367,10 +385,18 @@
         {
           "expr": "disk_used_bytes{service_name=~\"$service_name\",executor_name=~\"$executor_name\",task_name=~\"$task_name\"}",
           "format": "time_series",
+          "hide": true,
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "Disk Usage (container {{container_id}}, {{host}})",
           "refId": "B"
+        },
+        {
+          "expr": "disk_used_bytes{service_name=~\"$service_name\",executor_name=~\"$executor_name\",task_name=~\"$task_name\"}/disk_limit_bytes{service_name=~\"$service_name\",executor_name=~\"$executor_name\",task_name=~\"$task_name\"}",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "Disk Limit (container {{container_id}}, {{host}})",
+          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -392,7 +418,7 @@
       },
       "yaxes": [
         {
-          "format": "bytes",
+          "format": "percentunit",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -645,5 +671,5 @@
   "timezone": "",
   "title": "Mesos: Container Details",
   "uid": "mpivSaYiz",
-  "version": 2
+  "version": 5
 }
